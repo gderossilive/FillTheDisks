@@ -22,3 +22,8 @@
     }
 }
 
+$Disks=Get-Disk
+
+foreach ($disk in $Disks) {
+    Start-Job -ScriptBlock $FullFill_Disk -ArgumentList $Disk 
+}
