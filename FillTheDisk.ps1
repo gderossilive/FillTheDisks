@@ -20,7 +20,7 @@
 #SOFTWARE.
 #------------------------------------------------------------------------------
 
-Start-Transcript
+
 $FullFill_Disk = {
     param ($Disk)
     if ($Disk.Number -gt 1) {
@@ -51,4 +51,3 @@ foreach ($disk in $Disks) {
     Start-Job -ScriptBlock $FullFill_Disk -ArgumentList $Disk 
 }
 
-Stop-Transcript
