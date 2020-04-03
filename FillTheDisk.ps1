@@ -32,7 +32,7 @@ $FullFill_Disk = {
     $Item=New-Item -ItemType Directory $dir
     $set=Set-Location $dir
     Write-host "Creating files in $dir ..."
-    for($j=0; $j -lt 500; $j++)
+    for($j=0; $j -lt 5; $j++)
     {
          $out = new-object byte[] 1073741824;
          (new-object Random).NextBytes($out); 
