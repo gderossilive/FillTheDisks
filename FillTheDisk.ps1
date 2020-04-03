@@ -24,7 +24,7 @@ $FullFill_Disk = {
     param ($Disk)
     if ($Disk.Number -gt 1) {
 
-    $Init=Inintialize-Disk $Disk.Number –PartitionStyle GPT
+    $Init=Initialize-Disk $Disk.Number –PartitionStyle GPT
     $part=New-Partition -DiskNumber $Disk.Number -Size 999GB -AssignDriveLetter
     Write-host "Formatting"$part.DriveLetter
     $form=Format-Volume -DriveLetter $part.DriveLetter
