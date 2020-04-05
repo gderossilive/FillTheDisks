@@ -21,7 +21,7 @@
 #------------------------------------------------------------------------------
 
 $FullFill_Disk = {
-    param ($Disk, $GB)
+    param ($Disk, $Index)
     if ($Disk.Number -gt 1) {
 
     # Initialize the disk
@@ -33,7 +33,7 @@ $FullFill_Disk = {
     $Item=New-Item -ItemType Directory $dir
     $set=Set-Location $dir
     Write-host "Creating files in $dir ..."
-    for($j=0; $j -lt $GB; $j++)
+    for($j=0; $j -lt $Index; $j++)
     {
          $out = new-object byte[] 1073741824;
          (new-object Random).NextBytes($out); 
