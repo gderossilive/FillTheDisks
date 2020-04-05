@@ -20,12 +20,14 @@
 #SOFTWARE.
 #------------------------------------------------------------------------------
 
+)
+
 $FullFill_Disk = {
-    param ($Disk)
+    param ($Disk, $GB)
     if ($Disk.Number -gt 1) {
 
     # Initialize the disk
-    $Init=Initialize-Disk $Disk.Number –PartitionStyle GPT 
+    #$Init=Initialize-Disk $Disk.Number –PartitionStyle GPT 
     $part=New-Partition -DiskNumber $Disk.Number -Size 999GB -AssignDriveLetter
     Write-host "Formatting"$part.DriveLetter
     $form=Format-Volume -DriveLetter $part.DriveLetter
@@ -46,17 +48,10 @@ $FullFill_Disk = {
     }
 }
 
-Param(
-    [Parameter(Mandatory=$true)]
-    [ValidateRange(0,999)]
-    [Int]
-    $GB
-)
-
 $Disks=Get-Disk
 
 foreach ($disk in $Disks) {
-    Start-Job -ScriptBlock $FullFill_Disk -ArgumentList $Disk 
+    Start-Job -ScriptBlock $FullFill_Disk -ArgumentList $Disk, $GB 
 }
 
 Get-Job | Wait-Job
