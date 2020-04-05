@@ -20,13 +20,6 @@
 #SOFTWARE.
 #------------------------------------------------------------------------------
 
-Param(
-    [Parameter(Mandatory=$true)]
-    [ValidateRange(0,999)]
-    [Int]
-    $GB
-)
-
 $FullFill_Disk = {
     param ($Disk)
     if ($Disk.Number -gt 1) {
@@ -52,6 +45,13 @@ $FullFill_Disk = {
 
     }
 }
+
+Param(
+    [Parameter(Mandatory=$true)]
+    [ValidateRange(0,999)]
+    [Int]
+    $GB
+)
 
 $Disks=Get-Disk
 
