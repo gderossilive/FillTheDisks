@@ -20,6 +20,13 @@
 #SOFTWARE.
 #------------------------------------------------------------------------------
 
+Param(
+    [Parameter(Mandatory=$true)]
+    [ValidateRange(0,999)]
+    [Int]
+    $GB
+)
+
 $FullFill_Disk = {
     param ($Disk, $Index)
     if ($Disk.Number -gt 1) {
